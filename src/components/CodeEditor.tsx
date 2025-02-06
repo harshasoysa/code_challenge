@@ -39,7 +39,7 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
                 countdownStarted: false,
 
                 fillFuel(amount: number) {
-                    this.fuelLevel = amount;
+                    this.fuelLevel = amount ?? 0;
 
                     if (!amount) {
                         customConsole.log("🚨 Fuel is too low!");
