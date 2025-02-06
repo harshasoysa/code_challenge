@@ -24,13 +24,14 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
             setIsRunning(false);
 
             let outputLogs: string[] = [];
-            let errorHint: string | null = null;
-            let showCommandHint = false;
+            let errorHint: string | null = null; // Store only one hint at a time
 
+            // Custom console.log to capture output
             const customConsole = {
                 log: (msg: string) => outputLogs.push(`📝 ${msg}`),
             };
 
+            // Create a mock Rocket object to track state
             const Rocket = {
                 fuelLevel: 0,
                 engineReady: false,
@@ -47,7 +48,7 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
                         this.engineReady = true;
                         customConsole.log("✅ Engine is ready.");
                     } else {
-                        errorHint = `🚨 Fuel is too low!${showCommandHint ? " Use `Rocket.fillFuel(50);`" : ""}`;
+                        errorHint = "🚨 Fuel is too low! Try `Rocket.fillFuel(50);`";
                     }
                 },
 
@@ -69,7 +70,7 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
 
                 launch() {
                     if (this.fuelLevel < 50) {
-                        errorHint = `🚨 Fuel is too low!${showCommandHint ? " Use `Rocket.fillFuel(50);`" : ""}`;
+                        errorHint = "🚨 Fuel is too low! Use `Rocket.fillFuel(50);`";
                     } else if (!this.engineReady) {
                         errorHint = "🚨 The engine is not ready! Use `Rocket.checkEngineStatus();`";
                     } else if (!this.hatchClosed) {
@@ -83,8 +84,10 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
                 },
             };
 
+            // Evaluate user input in a controlled environment
             eval(code);
 
+            // Update console output and add the single most relevant error
             if (errorHint) outputLogs.push(errorHint);
 
             setConsoleOutput(outputLogs);
@@ -95,7 +98,9 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
 
     return (
         <div className="flex flex-col items-center justify-center p-5 z-30 ">
+            {/* Code Editor & Console Container */}
             <div className="w-[500px] bg-gray-800 border-2 border-gray-700 rounded-lg overflow-hidden">
+                {/* Code Editor */}
                 <div className="h-[250px] border-b border-gray-600">
                     <CodeMirror
                         value={code}
@@ -106,6 +111,7 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
                     />
                 </div>
 
+                {/* Console Output Section (Includes Logs and One Error Message) */}
                 <div className="h-[150px] bg-black p-2 text-green-400 text-sm font-mono overflow-y-auto">
                     {consoleOutput.length > 0 ? (
                         consoleOutput.map((line, index) => <div key={index}>{line}</div>)
@@ -115,6 +121,7 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
                 </div>
             </div>
 
+            {/* Buttons */}
             <div className="flex gap-4 mt-4">
                 <button
                     className="px-6 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg"
