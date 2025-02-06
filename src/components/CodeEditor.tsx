@@ -48,7 +48,7 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
                         this.engineReady = true;
                         customConsole.log("✅ Engine is ready.");
                     } else {
-                        errorHint = "🚨 Fuel is too low! Try `Rocket.fillFuel(50);`";
+                        errorHint = "🚨 Fuel is too low!";
                     }
                 },
 
@@ -59,9 +59,9 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
 
                 startCountdown() {
                     if (!this.engineReady) {
-                        errorHint = "🚨 The engine is not ready! Use `Rocket.checkEngineStatus();`";
+                        errorHint = "🚨 The engine is not ready!";
                     } else if (!this.hatchClosed) {
-                        errorHint = "🚨 Hatch is still open! Use `Rocket.closeHatch();`";
+                        errorHint = "🚨 Hatch is still open!";
                     } else {
                         this.countdownStarted = true;
                         customConsole.log("⏱️  Countdown started: T-minus 3, 2, 1...");
@@ -70,13 +70,13 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
 
                 launch() {
                     if (this.fuelLevel < 50) {
-                        errorHint = "🚨 Fuel is too low! Use `Rocket.fillFuel(50);`";
+                        errorHint = "🚨 Fuel is too low!";
                     } else if (!this.engineReady) {
-                        errorHint = "🚨 The engine is not ready! Use `Rocket.checkEngineStatus();`";
+                        errorHint = "🚨 The engine is not ready!";
                     } else if (!this.hatchClosed) {
-                        errorHint = "🚨 Hatch is still open! Use `Rocket.closeHatch();`";
+                        errorHint = "🚨 Hatch is still open!";
                     } else if (!this.countdownStarted) {
-                        errorHint = "🚨 Countdown hasn’t started! Use `Rocket.startCountdown();`";
+                        errorHint = "🚨 Countdown hasn’t started!";
                     } else {
                         customConsole.log("🚀 Rocket has launched successfully!");
                         setIsRunning(true);
