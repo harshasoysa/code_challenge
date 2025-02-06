@@ -42,7 +42,7 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
                     this.fuelLevel = amount;
 
                     if (!amount) {
-                        customConsole.log("✅ Fill fuel atleast 50%.");
+                        customConsole.log("🚨 Fuel is too low!");
                     }
 
                     customConsole.log(`🛢️  Fuel filled to ${this.fuelLevel}%.`);
