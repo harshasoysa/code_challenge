@@ -22,7 +22,7 @@ export default function PasscodePrompt({ onAccessGranted }: PasscodePromptProps)
     };
 
     return (
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-80">
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-80">
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-white text-center">
                 <h2 className="text-xl font-bold mb-4">Enter Passcode</h2>
                 <form onSubmit={handleSubmit} className="flex flex-row items-center justify-center gap-4">
