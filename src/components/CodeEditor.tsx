@@ -23,7 +23,7 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
             setConsoleOutput([]);
             setIsRunning(false);
 
-            let outputLogs: string[] = [];
+            const outputLogs: string[] = [];
             let errorHint: string | null = null; // Store only one hint at a time
 
             // Custom console.log to capture output
@@ -89,14 +89,14 @@ export default function CodeEditor({ setIsRunning }: CodeEditorProps) {
                 },
             };
 
-            // Evaluate user input in a controlled environment
-            eval(code);
+            // Evaluate user input with Rocket in scope
+            new Function("Rocket", code)(Rocket);
 
             // Update console output and add the single most relevant error
             if (errorHint) outputLogs.push(errorHint);
 
             setConsoleOutput(outputLogs);
-        } catch (error) {
+        } catch {
             setConsoleOutput(["🚨 Syntax error! Check your function calls."]);
         }
     };
