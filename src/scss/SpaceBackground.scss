@@ -78,9 +78,191 @@ $_precision: 10;
   overflow: hidden;
   z-index: 1;
   pointer-events: none;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 52% 42%, rgba(46, 55, 112, 0.2), transparent 24%),
+    radial-gradient(circle at 18% 78%, rgba(78, 35, 105, 0.18), transparent 30%),
+    linear-gradient(145deg, #02030d 0%, #080b24 48%, #110a27 100%);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.5px),
+      radial-gradient(circle, rgba(151, 196, 255, 0.7) 0 1px, transparent 1.5px),
+      radial-gradient(circle, rgba(255, 255, 255, 0.5) 0 0.6px, transparent 1px);
+    background-position: 25px 40px, 95px 125px, 10px 15px;
+    background-size: 170px 170px, 230px 230px, 75px 75px;
+    opacity: 0.7;
+  }
 }
 
+.sky__stars {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
 
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.24;
+  mix-blend-mode: screen;
+
+  &--violet {
+    width: 45vw;
+    height: 22vw;
+    left: 8%;
+    top: 42%;
+    background: #6d28d9;
+    transform: rotate(-18deg);
+  }
+
+  &--blue {
+    width: 36vw;
+    height: 18vw;
+    right: 3%;
+    top: 12%;
+    background: #0369a1;
+    transform: rotate(24deg);
+  }
+}
+
+.moon {
+  position: absolute;
+  width: clamp(90px, 11vw, 155px);
+  aspect-ratio: 1;
+  top: 8%;
+  left: 5%;
+  z-index: 2;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 62% 28%, rgba(255, 255, 255, 0.7) 0 3%, transparent 4%),
+    radial-gradient(circle at 35% 35%, #f8fafc 0%, #cbd5e1 54%, #64748b 100%);
+  box-shadow:
+    inset -18px -12px 24px rgba(15, 23, 42, 0.65),
+    0 0 25px rgba(191, 219, 254, 0.42),
+    0 0 70px rgba(96, 165, 250, 0.2);
+}
+
+.moon__crater {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(100, 116, 139, 0.26);
+  box-shadow: inset 2px 2px 3px rgba(51, 65, 85, 0.35);
+
+  &--one {
+    width: 20%;
+    height: 20%;
+    top: 23%;
+    left: 27%;
+  }
+
+  &--two {
+    width: 13%;
+    height: 13%;
+    top: 58%;
+    left: 22%;
+  }
+
+  &--three {
+    width: 25%;
+    height: 25%;
+    top: 48%;
+    left: 55%;
+  }
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 2;
+
+  &--distant {
+    width: clamp(28px, 3.5vw, 48px);
+    aspect-ratio: 1;
+    top: 18%;
+    right: 27%;
+    background: linear-gradient(135deg, #93c5fd 5%, #2563eb 48%, #172554 100%);
+    box-shadow: inset -9px -5px 10px rgba(2, 6, 23, 0.75), 0 0 18px rgba(59, 130, 246, 0.45);
+  }
+
+  &--ringed {
+    width: clamp(140px, 18vw, 245px);
+    aspect-ratio: 1;
+    right: 4%;
+    bottom: -8%;
+    background:
+      repeating-linear-gradient(168deg, transparent 0 12%, rgba(255, 255, 255, 0.12) 13% 16%),
+      radial-gradient(circle at 35% 28%, #fdba74 0%, #c2410c 50%, #431407 100%);
+    box-shadow: inset -28px -18px 30px rgba(30, 8, 4, 0.7), 0 0 40px rgba(251, 146, 60, 0.22);
+  }
+}
+
+.planet__ring {
+  position: absolute;
+  width: 155%;
+  height: 35%;
+  top: 33%;
+  left: -28%;
+  border: clamp(7px, 1vw, 14px) solid rgba(253, 186, 116, 0.72);
+  border-left-color: rgba(124, 45, 18, 0.72);
+  border-right-color: rgba(255, 237, 213, 0.8);
+  border-radius: 50%;
+  transform: rotate(-14deg);
+  box-shadow: 0 0 12px rgba(251, 146, 60, 0.2);
+}
+
+.shooting-star {
+  position: absolute;
+  z-index: 3;
+  width: 90px;
+  height: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95));
+  filter: drop-shadow(0 0 4px #bfdbfe);
+  transform: rotate(-35deg);
+  animation: shoot 9s ease-in infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: -1px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  &--one {
+    top: 20%;
+    left: 42%;
+    animation-delay: 1s;
+  }
+
+  &--two {
+    top: 62%;
+    left: 14%;
+    animation-delay: 5.5s;
+  }
+}
+
+@keyframes shoot {
+  0%, 72% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  84%, 100% {
+    opacity: 0;
+    translate: 22vw 16vw;
+  }
+}
 
 .star {
   opacity: 0;
@@ -138,5 +320,17 @@ $_precision: 10;
     100% {
       transform: translate(#{$x}vw, #{$y}vh);
     }
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .shooting-star,
+  .star {
+    animation: none !important;
+  }
+
+  .star {
+    opacity: 0.65;
   }
 }

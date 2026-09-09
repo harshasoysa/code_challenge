@@ -12,7 +12,7 @@ export default function LaunchMessage({ onRestartAction }: LaunchMessageProps) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 text-white"
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gray-900 text-white"
         >
             <h1 className="text-3xl font-bold mb-4">🚀 Launch Successful!</h1>
             <p className="text-lg">Thank you for your effort! 🎉</p>

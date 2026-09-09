@@ -36,8 +36,10 @@ export default function CodeChallenge() {
                 !launchComplete ? (
                     <>
                         {/* Header */}
-                        <Header />
-                        <div className="flex w-full px-8 h-full relative">
+                        <div className="relative z-10">
+                            <Header />
+                        </div>
+                        <div className="flex w-full px-8 h-full relative z-10">
                             <CodeEditor setIsRunning={setIsRunning} />
                             <RocketAnimation isRunning={isRunning} onLaunchComplete={handleLaunchComplete} />
                         </div>
