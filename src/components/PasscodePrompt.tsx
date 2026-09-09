@@ -13,7 +13,7 @@ export default function PasscodePrompt({ onAccessGranted }: PasscodePromptProps)
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (passcode === "3141592") {
+        if (passcode === atob("MTIzNA==")) {
             onAccessGranted(); // Grant access
         } else {
             setError("Incorrect passcode. Try again!");
