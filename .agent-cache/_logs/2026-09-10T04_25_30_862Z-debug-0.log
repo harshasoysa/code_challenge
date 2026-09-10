@@ -1,0 +1,18 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.9.8
+2 info using node@v22.23.2
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/workspace/runs/cmtv0nid701gto90kntlv7xrq-cmtuclmil000zuv11dmlvh862/.npmrc
+5 silly config load:file:/root/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm run build
+8 verbose argv "run" "build"
+9 verbose logfile logs-max:10 dir:/workspace/runs/cmtv0nid701gto90kntlv7xrq-cmtuclmil000zuv11dmlvh862/.agent-cache/_logs/2026-09-10T04_25_30_862Z-
+10 verbose logfile /workspace/runs/cmtv0nid701gto90kntlv7xrq-cmtuclmil000zuv11dmlvh862/.agent-cache/_logs/2026-09-10T04_25_30_862Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose cwd /workspace/runs/cmtv0nid701gto90kntlv7xrq-cmtuclmil000zuv11dmlvh862
+13 verbose os Linux 6.12.76-linuxkit
+14 verbose node v22.23.2
+15 verbose npm  v10.9.8
+16 verbose exit 0
+17 info ok
